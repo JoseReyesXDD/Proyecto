@@ -9,21 +9,20 @@
     
     <div class="contenedor-doble">
         <img class="imagen-perfil" src= "imagenes/image (1).gif">
-        <div>
-            <input class="input-tareas" type="text" placeholder="Nombre de la tarea">
+        <div style="margin: 10px;">
+            <input class="input-tarea" placeholder="Nombre de la tarea">
             <p class="texto"> Texto, Texto, Texto, Texto, Texto, Texto, Texto, Texto </p>
         </div>
         <div>
-            <button class="buttonBlue"> Agregar </button>
+            <button id="boton-agregar-01" class="button-agregar"> Agregar </button>
         </div>
     </div>
 
-    <ul class="lista1">
+    <ul class="lista-tareas">
         <p> LISTA</p>
         <li> 1 </li>
         <li> 2 </li>
         <li> 3 </li>
-        <li> 4 </li>
     </ul>
 
     <div class="fondo">
@@ -67,6 +66,55 @@
     caja de texto, boton, encabezado, lista, foother, 
 
     Tiene que tener su repositorio en github
-    -->    
+
+    Javascript:
+    - Es un lenguaje de programacion multiparadigma creado para interactuar con los elementos de una pagina web
+    - Es un lenguaje interpretado.
+    Los lenguajes interpretados utilizan algo llamado RUNTIME 
+    - Es un lenguaje de tipado dinamico
+
+    DOM:
+    Document object model
+    Es el resultado de traducir codigo html a elementos para mostrar en un navegador
+
+    -->
+    <script>
+        let contadorTarea = 0;
+
+        const botonAgregar = document.getElementById("boton-agregar-01");
+        const inputTarea = document.querySelector(".input-tarea");
+  
+        botonAgregar.addEventListener("click", () => {
+          const tarea = inputTarea.value;
+          const listaTareas = document.querySelector(".lista-tareas");
+          const nuevaTarea = document.createElement("li"); //<li></li>
+          nuevaTarea.textContent = tarea; //<li> valor del input</li>
+          contadorTarea++;
+
+          if (contadorTarea % 2 === 0) {
+            //nuevaTarea.style.color = "red";
+            nuevaTarea.classList.add('link-rojo');
+        } else {
+            //nuevaTarea.style.color = "purple";
+            nuevaTarea.classList.add('link-morado');
+        }
+
+          listaTareas.appendChild(nuevaTarea);
+          inputTarea.value = "";
+        });
+
+        const linkColor = document.getElementById("lista-color-01");
+
+        linkColor.addEventListener("click", () => {
+          const listaTareas = document.querySelector(".lista-color-01");
+
+          if (contadorTarea % 2 === 0) {
+            nuevaTarea.style.color = "red";
+        } else {
+            nuevaTarea.style.color = "purple";
+        }
+        });
+
+    </script>
 </body>
 </html>
